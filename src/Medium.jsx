@@ -3,7 +3,6 @@ import axios from 'axios';
 import {
   Container,
   Card,
-  Icon,
   Image,
   Loader,
   Dimmer,
@@ -26,7 +25,7 @@ export default function Medium() {
     getMediumArticle();
   }, []);
 
-  const getMediumArticle = (topic) => {
+  const getMediumArticle = (topic?) => {
     let url = 'https://medrum.herokuapp.com/articles';
 
     if (topic) {
@@ -80,7 +79,6 @@ export default function Medium() {
         options={categories}
         onChange={selectCategory}
       />
-
       <Card.Group doubling itemsPerRow={4} stackable>
         {articles &&
           articles.map((article, k) => {
@@ -90,14 +88,14 @@ export default function Medium() {
                   <Image src={article.image_url} wrapped ui={false} />
                   <Card.Content>
                     <Card.Header>{article.title}</Card.Header>
-                    <Card.Meta>
+                    {/* <Card.Meta>
                       <p>
                         {article.author.name}{' '}
                         {article.publication
                           ? `in ${article.publication.name}`
                           : `in ${article.author.name}`}
                       </p>
-                    </Card.Meta>
+                    </Card.Meta> */}
                     <Card.Description>{article.summary}</Card.Description>
                   </Card.Content>
                   <Card.Content extra>
